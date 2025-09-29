@@ -6,7 +6,7 @@ import { cn } from "../../Utils/Utilities";
 export const TextFlip = ({
     text = "I am an",
   words = ["Landing Pages", "Component Blocks", "Page Sections", "3D Shaders"],
-  duration = 6000,
+  duration = 4000,
 }: {
   text?: string;
   words: string[];
