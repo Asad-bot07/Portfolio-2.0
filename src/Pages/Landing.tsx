@@ -1,12 +1,12 @@
 import React from "react";
-import { cn } from "./Utils/Utilities";
-import { Spotlight } from "./Components/UI/Spotlight";
+import { cn } from "../Utils/Utilities";
+import { Spotlight } from "../Components/UI/Spotlight";
 import { motion } from "motion/react";
-import { TextFlip } from "./Components/Fonts/Text-flip";
-import { fadeUpVariant, fadeUpVariant2 } from "./Utils/Animations";
+import { TextFlip } from "../Components/Fonts/Text-flip";
+import { fadeUpVariant, fadeUpVariant2 } from "../Utils/Animations";
 import Asad from "./assets/Asad.png";
 
-export const App: React.FC = () => {
+export const Landing: React.FC = () => {
   if (window.matchMedia("(max-width: 768px)").matches) {
     return (
       <div className="flex-col relative flex min-h-screen overflow-hidden  bg-black/[0.96] antialiased items-center justify-center">
