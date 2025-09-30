@@ -4,20 +4,21 @@ import { Spotlight } from "../Components/UI/Spotlight";
 import { motion } from "motion/react";
 import { TextFlip } from "../Components/Fonts/Text-flip";
 import { fadeUpVariant, fadeUpVariant2 } from "../Utils/Animations";
-import Asad from '../assets/Asad.png'
+import Asad from "../assets/Asad.png";
+import Shuffle from "../Components/Fonts/ShuffleText";
 
 export const Landing: React.FC = () => {
   if (window.matchMedia("(max-width: 768px)").matches) {
     return (
       <div className="flex-col relative flex min-h-screen overflow-hidden  bg-black/[0.96] antialiased items-center justify-center">
         <motion.img
-          src={Asad}
-          alt=""
-          className="z-10 sm:size-60 size-50"
-          variants={fadeUpVariant}
-          initial="hidden"
-          animate="visible"
-        />
+        src={Asad}
+        alt=""
+        className="z-10 w-[250px] h-[250px] object-cover rounded-full"
+        variants={fadeUpVariant}
+        initial="hidden"
+        animate="visible"
+      />
         <div
           className={cn(
             "pointer-events-none absolute inset-0 [background-size:40px_40px] select-none [background-image:linear-gradient(to_right,#171717_1px,transparent_1px),linear-gradient(to_bottom,#171717_1px,transparent_1px)]"
@@ -28,12 +29,28 @@ export const Landing: React.FC = () => {
         fill="white"
       /> */}
         <motion.div variants={fadeUpVariant} initial="hidden" animate="visible">
+          <Shuffle
+            text="> ASAD HUSSAIN"
+            style={{ color: "white", fontSize: 20, marginTop: 25 }}
+            shuffleDirection="right"
+            duration={1.75}
+            animationMode="evenodd"
+            shuffleTimes={1}
+            ease="power3.out"
+            stagger={0.03}
+            threshold={0.1}
+            triggerOnce={true}
+            triggerOnHover={true}
+            respectReducedMotion={true}
+          />
+        </motion.div>
+        <motion.div variants={fadeUpVariant} initial="hidden" animate="visible">
           <motion.div className="relative mx-4 my-4 flex flex-col items-center justify-center gap-4 text-center sm:mx-0 sm:mb-0 sm:flex-row">
             <TextFlip
               words={[
                 "Frontend Developer",
                 "UI/UX Designer",
-                "AI/ML",
+                "AI/ML Enthusiast",
                 "Tech Enthusiast",
               ]}
             />
@@ -56,7 +73,7 @@ export const Landing: React.FC = () => {
       <motion.img
         src={Asad}
         alt=""
-        className="z-10 sm:size-60 size-50"
+        className="z-10 w-[380px] h-[380px] object-cover rounded-full"
         variants={fadeUpVariant}
         initial="hidden"
         animate="visible"
@@ -67,16 +84,32 @@ export const Landing: React.FC = () => {
         )}
       />
       <Spotlight
-        className="-top-10 -left-10 md:-top-20 md:left-80 z-10"
+        className="-top-10 -left-5 md:-top-25 md:left-85 z-10"
         fill="white"
       />
+      <motion.div variants={fadeUpVariant} initial="hidden" animate="visible">
+        <Shuffle
+          text="> ASAD HUSSAIN"
+          style={{ color: "white", fontSize: 30, marginTop: 25 }}
+          shuffleDirection="right"
+          duration={1.75}
+          animationMode="evenodd"
+          shuffleTimes={1}
+          ease="power3.out"
+          stagger={0.03}
+          threshold={0.1}
+          triggerOnce={true}
+          triggerOnHover={true}
+          respectReducedMotion={true}
+        />
+      </motion.div>
       <motion.div variants={fadeUpVariant} initial="hidden" animate="visible">
         <motion.div className="relative mx-4 my-4 flex flex-col items-center justify-center gap-4 text-center sm:mx-0 sm:mb-0 sm:flex-row">
           <TextFlip
             words={[
               "Frontend Developer",
               "UI/UX Designer",
-              "AI/ML",
+              "AI/ML Enthusiast",
               "Tech Enthusiast",
             ]}
           />
