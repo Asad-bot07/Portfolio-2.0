@@ -19,3 +19,9 @@
   font-weight: 400;
   font-style: normal;
 }
+.caveat-cursive {
+  font-family: "Caveat", cursive;
+  font-optical-sizing: auto;
+  font-weight: 450;
+  font-style: normal;
+}
