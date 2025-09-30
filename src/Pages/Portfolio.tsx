@@ -1,3 +1,4 @@
+import AboutPage from "./AboutPage";
 import { Landing } from "./Landing";
 
 function Portfolio() {
@@ -10,6 +11,7 @@ function Portfolio() {
   return (
     <div>
       <Landing />
+      <AboutPage/>
     </div>
   );
 }
