@@ -5,10 +5,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 type TextType = {
-    text? : string
+    text? : string,
+    end?:number
 }
 
-export const MarqueeScreen: React.FC<TextType> = ({text}) => {
+export const MarqueeScreen: React.FC<TextType> = ({text, end}) => {
   const textRef = useRef<HTMLHeadingElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -22,7 +23,7 @@ export const MarqueeScreen: React.FC<TextType> = ({text}) => {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=3000", 
+          end: `+=${end || 3000}`, 
           scrub: 1,
           pin: true,
           markers: true, 

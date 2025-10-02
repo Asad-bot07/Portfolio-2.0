@@ -22,8 +22,8 @@ function Portfolio() {
       <AboutPage />
       <Partition/>
       <SkillsPage />
-      <MarqueeScreen text="PROJECTS"/>
-      <MarqueeScreen text="ACHIEVEMENTS"/>
+      <MarqueeScreen text="PROJECTS" end={1000}/>
+      <MarqueeScreen text="ACHIEVEMENTS" end={3000}/>
       <motion.div
         className="fixed bottom-4 right-4 z-50 lg:block hidden"
         variants={fadeUpVariant}
