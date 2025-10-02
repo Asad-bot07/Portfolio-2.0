@@ -18,8 +18,6 @@ export const Partition: React.FC = () => {
             const rect = container.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            
-            // Create a curved path based on mouse position
             const curvedPath = `M 10 100 Q ${x} ${y} 990 100`;
             
             gsap.to(path, {
@@ -39,8 +37,6 @@ export const Partition: React.FC = () => {
 
         container.addEventListener("mousemove", handleMouseMove);
         container.addEventListener("mouseleave", handleMouseLeave);
-
-        // Cleanup event listeners on unmount
         return () => {
             container.removeEventListener("mousemove", handleMouseMove);
             container.removeEventListener("mouseleave", handleMouseLeave);
@@ -53,7 +49,7 @@ export const Partition: React.FC = () => {
             className="w-full bg-black flex justify-center items-center" 
             id="string"
         >
-            <svg width="1000" height="200">
+            <svg className="w-[1000px] h-[200px] ">
                 <path 
                     ref={pathRef}
                     d="M 10 100 Q 500 100 990 100" 

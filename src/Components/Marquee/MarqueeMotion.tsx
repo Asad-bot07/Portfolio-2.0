@@ -1,7 +1,12 @@
 import gsap from "gsap";
 import { useRef, useEffect } from "react";
 
-function About() {
+type Marquee = {
+  name ?: string,
+  img ?: string
+}
+
+function About(props : Marquee) {
   const reference = useRef<HTMLDivElement>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
 
@@ -83,9 +88,9 @@ function About() {
       <div className="flex" ref={reference}>
         {[...Array(25)].map((_, index) => (
           <div key={index} className="bg-black/30 flex shrink-0 items-center gap-20 py-15 px-5">
-            <h1 className=" text-6xl sm:text-9xl whitespace-nowrap font-bold">About Me</h1>
+            <h1 className=" text-6xl sm:text-9xl whitespace-nowrap font-bold"> {props.name || "None"} </h1>
             <img
-              src="https://www.brandium.nl/wp-content/uploads/2023/07/arrow-br.svg"
+              src={props.img || "https://www.brandium.nl/wp-content/uploads/2023/07/arrow-br.svg"}
               alt="arrow"
               className="h-[60px]  sm:h-[100px] transition-transform"
               ref={addToImgRefs}

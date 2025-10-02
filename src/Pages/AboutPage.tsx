@@ -1,11 +1,11 @@
-import About from "../Components/Marquee/About";
+import About from "../Components/Marquee/MarqueeMotion";
 import { motion } from "motion/react";
 import { fadeUpVariant } from "../Utils/Animations";
 
 function AboutPage() {
   return (
     <div className="">
-      <About />
+      <About name="About Me" img="https://www.brandium.nl/wp-content/uploads/2023/07/arrow-br.svg"/>
       <div className="bg-black py-10 md:py-20 min-h-[80vh] px-4 md:px-0">
         <motion.div
           className="max-w-5xl mx-auto"
