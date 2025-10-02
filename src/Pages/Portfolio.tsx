@@ -7,6 +7,7 @@ import { fadeUpVariant } from "../Utils/Animations";
 import { Partition } from "../Components/Partition/Partition";
 import CursorFollower from "../Components/Cursor/Cursor";
 import { MarqueeScreen } from "../Components/Experiences-Achievements/ExpAndAchi";
+import { ProjectPage } from "./ProjectsPage";
 
 function Portfolio() {
   //   const items = [
@@ -23,6 +24,7 @@ function Portfolio() {
       <Partition/>
       <SkillsPage />
       <MarqueeScreen text="PROJECTS" end={1000}/>
+      <ProjectPage/>
       <MarqueeScreen text="ACHIEVEMENTS" end={3000}/>
       <motion.div
         className="fixed bottom-4 right-4 z-50 lg:block hidden"
