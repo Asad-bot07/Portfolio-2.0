@@ -34,9 +34,9 @@ function AboutPage() {
             <span className="font-semibold">innovative</span> and{" "}
             <span className="font-semibold">impactful</span>. With a solid
             foundation in
-            <span className="font-semibold text-xl md:text-2xl"> C</span>,{" "}
-            <span className="font-semibold text-xl md:text-2xl"> C++</span>, and{" "}
-            <span className="font-semibold text-xl md:text-2xl"> Java</span>,
+            <span className="font-semibold text-xl md:text-2xl schoolbell"> C</span>,{" "}
+            <span className="font-semibold text-xl schoolbell md:text-2xl"> C++</span>, and{" "}
+            <span className="font-semibold schoolbell text-xl md:text-2xl"> Java</span>,
             along with strong problem-solving skills in
             <span className="font-semibold text-xl md:text-2xl schoolbell">
               {" "}

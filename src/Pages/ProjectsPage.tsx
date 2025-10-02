@@ -71,9 +71,9 @@ const Projects: ProjectType[] = [
 
 export const ProjectPage: React.FC = () => {
   return (
-    <div className="bg-black relative min-h-screen z-10 overflow-hidden w-ful">
+    <div className="bg-black relative h-[110vh] z-10 overflow-hidden w-ful">
       <Particles/>
-      <div className="absolute inset-0 z-50  mt-10 mb-15 flex flex-wrap justify-center gap-15">
+      <div className="absolute inset-0 z-50  mt-10 mb-15 flex flex-wrap justify-center gap-10">
         {Projects.map((project, index) => (
           <PinContainer key={index} title={project.title} href={project.href}>
             <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[20rem] h-[20rem]">

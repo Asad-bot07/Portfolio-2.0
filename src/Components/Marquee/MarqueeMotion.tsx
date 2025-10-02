@@ -25,7 +25,7 @@ function About(props : Marquee) {
         
         gsap.to(refr, {
           xPercent: -100,
-          duration: 15,
+          duration: 40,
           repeat: -1,
           ease: "none",
         });
@@ -46,7 +46,7 @@ function About(props : Marquee) {
         
         gsap.to(refr, {
           xPercent: 0,
-          duration: 15,
+          duration: 40,
           repeat: -1,
           ease: "none",
         });
@@ -67,7 +67,7 @@ function About(props : Marquee) {
     window.addEventListener("wheel", handleWheel);
     gsap.to(reference.current, {
       xPercent: -100,
-      duration: 15,
+      duration: 40,
       repeat: -1,
       ease: "none",
     });
@@ -87,12 +87,12 @@ function About(props : Marquee) {
     <div className="flex overflow-hidden sm:h-[80vh]" id="AboutCarousel">
       <div className="flex" ref={reference}>
         {[...Array(25)].map((_, index) => (
-          <div key={index} className="bg-black/30 flex shrink-0 items-center gap-20 py-15 px-5">
-            <h1 className=" text-6xl sm:text-9xl whitespace-nowrap font-bold"> {props.name || "None"} </h1>
+          <div key={index} className="bg-sky-300/40 flex shrink-0 items-center gap-20 py-15 px-5">
+            <h1 className=" text-6xl sm:text-[40vh] whitespace-nowrap font-bold"> {props.name || "None"} </h1>
             <img
               src={props.img || "https://www.brandium.nl/wp-content/uploads/2023/07/arrow-br.svg"}
               alt="arrow"
-              className="h-[60px]  sm:h-[100px] transition-transform"
+              className="h-[60px]  sm:h-[200px] transition-transform"
               ref={addToImgRefs}
             />
           </div>

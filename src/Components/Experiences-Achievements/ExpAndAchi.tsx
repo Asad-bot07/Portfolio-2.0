@@ -6,10 +6,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 type TextType = {
     text? : string,
-    end?:number
+    end?:number,
+    percent : number
 }
 
-export const MarqueeScreen: React.FC<TextType> = ({text, end}) => {
+export const MarqueeScreen: React.FC<TextType> = ({text, end, percent}) => {
   const textRef = useRef<HTMLHeadingElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -18,7 +19,7 @@ export const MarqueeScreen: React.FC<TextType> = ({text, end}) => {
 
     const ctx = gsap.context(() => {
       gsap.to(textRef.current, {
-        xPercent: -150, 
+        xPercent: percent, 
         ease: "none",
         scrollTrigger: {
           trigger: containerRef.current,
@@ -26,7 +27,7 @@ export const MarqueeScreen: React.FC<TextType> = ({text, end}) => {
           end: `+=${end || 3000}`, 
           scrub: 1,
           pin: true,
-          markers: true, 
+          markers: false, 
         },
       });
     }, containerRef);
@@ -40,7 +41,7 @@ export const MarqueeScreen: React.FC<TextType> = ({text, end}) => {
     >
       <h1
         ref={textRef}
-        className="text-black font-bold text-[15vh] sm:text-[70vh] whitespace-nowrap"
+        className="flex text-black font-bold text-[20vh] sm:text-[70vh] whitespace-nowrap"
       >
         {text || 'IDK'}
       </h1>
