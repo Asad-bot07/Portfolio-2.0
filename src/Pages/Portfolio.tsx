@@ -5,6 +5,7 @@ import CircularText from "../Components/Rotate/RotatingText";
 import { motion } from "motion/react";
 import { fadeUpVariant } from "../Utils/Animations";
 import { Partition } from "../Components/Partition/Partition";
+import CursorFollower from "../Components/Cursor/Cursor";
 
 function Portfolio() {
   //   const items = [
@@ -15,13 +16,11 @@ function Portfolio() {
 
   return (
     <div className="relative min-h-screen">
-      {/* All page sections */}
+      <CursorFollower/>
       <Landing />
       <AboutPage />
       <Partition/>
       <SkillsPage />
-
-      {/* Circular text fixed to viewport bottom-right */}
       <motion.div
         className="fixed bottom-4 right-4 z-50 lg:block hidden"
         variants={fadeUpVariant}
