@@ -119,16 +119,19 @@ const icons: Skill[] = [
 function SkillsPage() {
   return (
     <>
-      <div className="bg-black relative h-[85vh] z-10 overflow-hidden w-full">
+      <div className="bg-black relative min-h-screen sm:h-[85vh] z-10 overflow-hidden w-full">
         <Particles />
-        <div className="absolute inset-0 z-50 pt-15">
+        <div className="absolute inset-0 z-50 pt-10">
+          {/* Heading */}
           <div>
-            <h1 className="text-white sm:text-7xl text-5xl cursive text-center">Skills</h1>
-            <p className="text-center cursive underline underline-offset-2 text-white text-sm sm:text-xl">
+            <h1 className="text-white sm:text-7xl text-5xl cursive text-center">
+              Skills
+            </h1>
+            <p className="text-center cursive underline underline-offset-2 text-white text-sm sm:text-xl mt-2">
               Skills that do the heavy lifting, so I don’t have to
             </p>
           </div>
-          <div className="sm:mx-20 mx-8 my-10 grid gap-6 sm:gap-15  grid-cols-3 sm:grid-cols-7 justify-center">
+          <div className="mx-6 sm:mx-20 my-10 sm:mt-30 grid gap-6 sm:gap-10 grid-cols-2 xs:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 justify-center">
             {icons.map((skill) => (
               <SkillCard key={skill.name} skill={skill} />
             ))}
@@ -138,5 +141,4 @@ function SkillsPage() {
     </>
   );
 }
-
 export default SkillsPage;
