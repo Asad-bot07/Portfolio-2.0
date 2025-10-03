@@ -32,7 +32,7 @@ export const MarqueeScreen: React.FC<TextType> = ({text, end, percent}) => {
       });
     }, containerRef);
     return () => ctx.revert();
-  }, []);
+  });
 
   return (
     <section

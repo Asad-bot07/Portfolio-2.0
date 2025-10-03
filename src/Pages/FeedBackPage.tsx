@@ -21,11 +21,11 @@ export function FeedBackForm(){
          setfirstName(e.target.value)
     }
 
-    const handleLast = (e : React.ChangeEvent<HTMLFormElement>) => {
+    const handleLast = (e : React.ChangeEvent<HTMLInputElement>) => {
          setsecondName(e.target.value)
     }
 
-    const handleMail = (e : React.ChangeEvent<HTMLFormElement>) => {
+    const handleMail = (e : React.ChangeEvent<HTMLInputElement>) => {
          setemail(e.target.value)
     }
 
@@ -38,7 +38,7 @@ export function FeedBackForm(){
     }
 
 
-  const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     console.log("Form submitted");
     console.log(firstName, secondName, email, feedback, improve);
@@ -54,7 +54,7 @@ export function FeedBackForm(){
         grow!
       </p>
 
-      <form className="my-8" onSubmit={handleSubmit}>
+      <form className="my-8">
         <div className="mb-4 flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2 text-white">
           <LabelInputContainer>
             <Label htmlFor="firstname">First name</Label>

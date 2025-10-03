@@ -31,7 +31,7 @@ export const Partition: React.FC = () => {
             gsap.to(path, {
                 attr: { d: finalPath },
                 duration: 0.5,
-                ease: "CustomWiggle"
+                ease: "bounce"
             });
         };
 

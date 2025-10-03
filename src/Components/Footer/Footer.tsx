@@ -36,8 +36,6 @@ export const Footer: React.FC = () => {
             </a>
         </div>
       </div>
-
-      {/* Your name */}
       <div className="text-sm text-white/30 font-medium">
         © 2025 Asad Hussain
       </div>
