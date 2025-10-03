@@ -4,7 +4,7 @@ import { Spotlight } from "../Components/UI/Spotlight";
 import { motion } from "motion/react";
 import { TextFlip } from "../Components/Fonts/Text-flip";
 import { fadeUpVariant, fadeUpVariant2 } from "../Utils/Animations";
-import Asad from "../assets/Asad.png";
+import Asad from "../assets/Asad-min.png";
 import Shuffle from "../Components/Fonts/ShuffleText";
 
 export const Landing: React.FC = () => {

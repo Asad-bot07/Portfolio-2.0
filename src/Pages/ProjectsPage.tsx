@@ -1,11 +1,11 @@
 import type React from "react";
 import { PinContainer } from "../Components/PointedProjects/PinContainer";
-import CurrencyConverter from "../assets/currencyConverter.png";
-import PasswordGenerator from "../assets/password.png";
-import Grimtok from "../assets/grimtok.png";
-import Todo from "../assets/todo.png";
-import Sneakick from "../assets/sneakick.gif";
-import QR from "../assets/qr.gif";
+import CurrencyConverter from "../assets/currencyConverter-min.png";
+import PasswordGenerator from "../assets/password-min.png";
+import Grimtok from "../assets/grimtok-min.png";
+import Todo from "../assets/todo-min.png";
+import Sneakick from "../assets/sneakick-min.gif";
+import QR from "../assets/qr-min.gif";
 // import weather from "../assets/weather.gif";
 import { Particles } from "../Components/UI/Particles";
 

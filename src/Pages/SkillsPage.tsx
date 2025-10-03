@@ -1,6 +1,6 @@
 import { Particles } from "../Components/UI/Particles";
 import { SkillCard } from "../Components/Skills/Skills";
-import { Partition } from "../Components/Partition/Partition";
+// import { Partition } from "../Components/Partition/Partition";
 
 type Skill = {
   name: string;
@@ -123,19 +123,18 @@ function SkillsPage() {
         <Particles />
         <div className="absolute inset-0 z-50 pt-15">
           <div>
-            <h1 className="text-white text-7xl cursive text-center">Skills</h1>
-            <p className="text-center cursive underline underline-offset-2 text-white text-xl">
+            <h1 className="text-white sm:text-7xl text-5xl cursive text-center">Skills</h1>
+            <p className="text-center cursive underline underline-offset-2 text-white text-sm sm:text-xl">
               Skills that do the heavy lifting, so I don’t have to
             </p>
           </div>
-          <div className="sm:mx-20 mx-8 my-20 grid gap-6 sm:gap-15  grid-cols-2 sm:grid-cols-7 justify-center">
+          <div className="sm:mx-20 mx-8 my-10 grid gap-6 sm:gap-15  grid-cols-3 sm:grid-cols-7 justify-center">
             {icons.map((skill) => (
               <SkillCard key={skill.name} skill={skill} />
             ))}
           </div>
         </div>
       </div>
-      <Partition/>
     </>
   );
 }

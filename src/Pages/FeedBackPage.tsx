@@ -9,6 +9,8 @@ import { cn } from "../Utils/Utilities";
 //   IconBrandOnlyfans,
 // } from "@tabler/icons-react";
 import { TextAreaBox } from "../Components/Feedback/Textarea";
+// import { db } from "../Firebase/Firebase";
+// import { getFirestore, collection, addDoc } from 'firebase/firestore'
 
 export function FeedBackForm(){
   const [firstName, setfirstName] = useState<string>("");
@@ -16,6 +18,18 @@ export function FeedBackForm(){
   const [email, setemail] = useState<string>("");
   const [feedback, setFeedback] = useState<string>("");
   const [improve, setImprove] = useState<string>("");
+
+
+    // const firestore = getFirestore(db)
+    // const WriteData = async () => {
+    //   await addDoc(collection(firestore,"FeedBacks"), {
+    //     FirstName : firstName,
+    //     SecondName : secondName,
+    //     Mail : email,
+    //     Feeds : feedback,
+    //     Improve : improve
+    //   })
+    // }
 
     const handleFirst = (e : React.ChangeEvent<HTMLInputElement>) => {
          setfirstName(e.target.value)
@@ -41,7 +55,8 @@ export function FeedBackForm(){
   const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     console.log("Form submitted");
-    console.log(firstName, secondName, email, feedback, improve);
+    // console.log(firstName, secondName, email, feedback, improve);
+    // WriteData()
     
   };
   return (

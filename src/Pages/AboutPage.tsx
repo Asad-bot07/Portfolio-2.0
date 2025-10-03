@@ -13,7 +13,7 @@ function AboutPage() {
           initial="hidden"
           animate="visible"
         >
-          <p className="spectral-semibold mb-6 text-xl md:text-2xl leading-relaxed text-gray-300">
+          <p className=" spectral-semibold mb-6 text-xl md:text-2xl leading-relaxed text-gray-300">
             Hi folks!!, I'm{" "}
             <span className="cursive text-3xl md:text-4xl text-white ">
               Asad Hussain
@@ -28,7 +28,7 @@ function AboutPage() {
             2024–2028).
           </p>
 
-          <p className="mb-6 text-sm md:text-base leading-relaxed text-gray-300">
+          <p className="mb-6 text-sm md:text-base leading-relaxed text-gray-300 spectral-semibold">
             I'm driven by a strong desire to solve real-world problems through
             technology and build digital solutions that are both
             <span className="font-semibold">innovative</span> and{" "}
@@ -45,7 +45,7 @@ function AboutPage() {
             , I strive to create efficient and scalable solutions.
           </p>
 
-          <p className="mb-6 text-sm md:text-base leading-relaxed text-gray-300">
+          <p className="mb-6 text-sm md:text-base leading-relaxed text-gray-300 spectral-semibold">
             My technical toolkit spans across{" "}
             <span className="font-semibold schoolbell text-lg md:text-xl">
               TypeScript
@@ -92,7 +92,7 @@ function AboutPage() {
             .
           </p>
 
-          <p className="mb-10 text-sm md:text-base leading-relaxed text-gray-300">
+          <p className="mb-10 text-sm md:text-base leading-relaxed text-gray-300 spectral-semibold">
             Expanding my horizons, I'm learning{" "}
             <span className="font-semibold schoolbell text-lg md:text-xl">
               Python

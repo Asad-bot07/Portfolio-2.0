@@ -36,7 +36,7 @@ export const PinContainer = ({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       href={href || "/"}
-      target="_blank" // <-- so projects open in new tab
+      target="_blank"
       rel="noopener noreferrer"
     >
       <div
