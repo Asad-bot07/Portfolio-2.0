@@ -3,7 +3,8 @@ import { useRef, useEffect } from "react";
 
 type Marquee = {
   name ?: string,
-  img ?: string
+  img ?: string,
+  num ?:number
 }
 
 function About(props : Marquee) {
@@ -24,8 +25,8 @@ function About(props : Marquee) {
         isAnimating = true;
         
         gsap.to(refr, {
-          xPercent: -100,
-          duration: 40,
+          xPercent: props.num || -80,
+          duration: 80,
           repeat: -1,
           ease: "none",
         });
