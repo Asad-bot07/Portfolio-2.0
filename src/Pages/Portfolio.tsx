@@ -26,7 +26,7 @@ function Portfolio() {
       <AboutPage />
       {/* <Partition/> */}
       <SkillsPage />
-      <MarqueeScreen text="PROJECTS" end={1000} percent={-100}/>
+      <MarqueeScreen text="PROJECTS" end={1400} percent={-100}/>
       <ProjectPage/>
       {/* <MarqueeScreen text="CONNECT WITH ME" end={1000} percent={-250}/>
       <div className="bg-black h-[120vh] items-center justify-center flex">
