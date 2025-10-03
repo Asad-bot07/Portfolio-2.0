@@ -21,7 +21,7 @@ function About(props : Marquee) {
       const imgs = imgRefs.current;
 
       if (events.deltaY > 0) {
-        console.log("going neeche");
+        // console.log("going neeche");
         isAnimating = true;
         
         gsap.to(refr, {
