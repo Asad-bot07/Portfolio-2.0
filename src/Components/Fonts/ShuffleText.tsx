@@ -66,6 +66,7 @@ const Shuffle: React.FC<ShuffleProps> = ({
   const tlRef = useRef<gsap.core.Timeline | null>(null);
   const playingRef = useRef(false);
   const hoverHandlerRef = useRef<((e: Event) => void) | null>(null);
+  // const n : number = 0
 
   useEffect(() => {
     if ('fonts' in document) {
@@ -113,7 +114,8 @@ const Shuffle: React.FC<ShuffleProps> = ({
         }
         try {
           splitRef.current?.revert();
-        } catch {}
+        } catch {console.log("error occured");
+        }
         splitRef.current = null;
         playingRef.current = false;
       };
@@ -184,7 +186,7 @@ const Shuffle: React.FC<ShuffleProps> = ({
           }
 
           gsap.set(inner, { x: startX, force3D: true });
-          if (colorFrom) (inner.style as any).color = colorFrom;
+          if (colorFrom) inner.style.color = colorFrom;
 
           inner.setAttribute('data-final-x', String(finalX));
           inner.setAttribute('data-start-x', String(startX));
@@ -231,7 +233,7 @@ const Shuffle: React.FC<ShuffleProps> = ({
           repeatDelay: loop ? loopDelay : 0,
           onRepeat: () => {
             if (scrambleCharset) randomizeScrambles();
-            gsap.set(strips, { x: (i, t: HTMLElement) => parseFloat(t.getAttribute('data-start-x') || '0') });
+            gsap.set(strips, { x: (_: number, t: HTMLElement) => parseFloat(t.getAttribute('data-start-x') || '0') });
             onShuffleComplete?.();
           },
           onComplete: () => {
@@ -249,7 +251,7 @@ const Shuffle: React.FC<ShuffleProps> = ({
           tl.to(
             targets,
             {
-              x: (i, t: HTMLElement) => parseFloat(t.getAttribute('data-final-x') || '0'),
+              x: (_: number, t: HTMLElement) => parseFloat(t.getAttribute('data-final-x') || '0'),
               duration,
               ease,
               force3D: true,
@@ -356,9 +358,9 @@ const Shuffle: React.FC<ShuffleProps> = ({
   };
 
   const classes = `${baseTw} ${ready ? 'visible' : 'invisible'} ${className}`.trim();
-  const Tag = (tag || 'p') as keyof JSX.IntrinsicElements;
+  const Tag = (tag || "p") as keyof React.JSX.IntrinsicElements;
 
-  return React.createElement(Tag, { ref: ref as any, className: classes, style: commonStyle }, text);
+  return React.createElement(Tag, { ref: ref as React.RefObject<HTMLElement>, className: classes, style: commonStyle }, text);
 };
 
 export default Shuffle;
