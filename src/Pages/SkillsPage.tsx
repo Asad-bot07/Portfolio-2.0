@@ -131,7 +131,7 @@ function SkillsPage() {
               Skills that do the heavy lifting, so I don’t have to
             </p>
           </div>
-          <div className="mx-6 sm:mx-20 my-10 sm:mt-30 grid gap-6 sm:gap-10 grid-cols-2 xs:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 justify-center">
+          <div className="mr-5 ml-2 sm:mx-20 mt-25 sm:mt-30 grid gap-5 sm:gap-10 grid-cols-3 xs:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 justify-center">
             {icons.map((skill) => (
               <SkillCard key={skill.name} skill={skill} />
             ))}
