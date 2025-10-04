@@ -1,6 +1,5 @@
 import { Particles } from "../Components/UI/Particles";
 import { SkillCard } from "../Components/Skills/Skills";
-// import { Partition } from "../Components/Partition/Partition";
 
 type Skill = {
   name: string;
@@ -118,27 +117,30 @@ const icons: Skill[] = [
 
 function SkillsPage() {
   return (
-    <>
-      <div className="bg-black relative min-h-screen sm:h-[85vh] z-10 overflow-hidden w-full">
+    <div className="relative min-h-[85vh] md:min-h-[60vh] w-full overflow-hidden lg:min-h-[90vh] bg-black">
+      <div className="absolute inset-0 z-0">
         <Particles />
-        <div className="absolute inset-0 z-50 pt-10">
-          {/* Heading */}
-          <div>
-            <h1 className="text-white sm:text-7xl text-5xl cursive text-center">
-              Skills
-            </h1>
-            <p className="text-center cursive underline underline-offset-2 text-white text-sm sm:text-xl mt-2">
-              Skills that do the heavy lifting, so I don’t have to
-            </p>
-          </div>
-          <div className="mr-5 ml-2 sm:mx-20 mt-25 sm:mt-30 grid gap-5 sm:gap-10 grid-cols-3 xs:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 justify-center">
-            {icons.map((skill) => (
-              <SkillCard key={skill.name} skill={skill} />
-            ))}
-          </div>
+      </div>
+      <div className="relative z-10 px-4 py-10 md:px-6 md:py-16 lg:px-8">
+        {/* Header */}
+        <div className="mb-12 text-center md:mb-16 lg:mb-20">
+          <h1 className="cursive text-4xl text-white md:text-6xl lg:text-7xl">
+            Skills
+          </h1>
+          <p className="cursive mt-2 text-sm text-white underline underline-offset-2 md:text-lg lg:text-xl">
+            Skills that do the heavy lifting, so I don't have to
+          </p>
+        </div>
+
+        {/* Skills Grid */}
+        <div className="mx-auto grid max-w-7xl grid-cols-3 gap-4 sm:grid-cols-4 sm:gap-6 md:grid-cols-5 md:gap-8 lg:grid-cols-6 lg:gap-10 xl:grid-cols-7">
+          {icons.map((skill) => (
+            <SkillCard key={skill.name} skill={skill} />
+          ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
+
 export default SkillsPage;
