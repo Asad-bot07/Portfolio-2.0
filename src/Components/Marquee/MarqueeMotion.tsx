@@ -1,100 +1,77 @@
 import gsap from "gsap";
 import { useRef, useEffect } from "react";
 
-type Marquee = {
-  name ?: string,
-  img ?: string,
-  num ?:number
-}
+type MarqueeProps = {
+  name?: string;
+  img?: string;
+  speed?: number;
+};
 
-function About(props : Marquee) {
-  const reference = useRef<HTMLDivElement>(null);
+function About({ name = "None", img = "https://www.brandium.nl/wp-content/uploads/2023/07/arrow-br.svg", speed = 80 }: MarqueeProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
+  const animationRef = useRef<gsap.core.Tween | null>(null);
+  const isAnimatingRef = useRef(false);
 
   useEffect(() => {
-    let isAnimating = false;
+    const container = containerRef.current;
+    if (!container) return;
 
-    const handleWheel = (events: WheelEvent) => {
-      if (isAnimating) return;
-      
-      const refr = reference.current;
-      const imgs = imgRefs.current;
-
-      if (events.deltaY > 0) {
-        // console.log("going neeche");
-        isAnimating = true;
-        
-        gsap.to(refr, {
-          xPercent: props.num || -80,
-          duration: 80,
-          repeat: -1,
-          ease: "none",
-        });
-
-        imgs.forEach(img => {
-          if (img) {
-            gsap.to(img, {
-              rotate: 0,
-              duration: 0.3
-            });
-          }
-        });
-        
-        setTimeout(() => isAnimating = false, 100);
-      } else {
-        console.log("going upar");
-        isAnimating = true;
-        
-        gsap.to(refr, {
-          xPercent: 0,
-          duration: 40,
-          repeat: -1,
-          ease: "none",
-        });
-
-        imgs.forEach(img => {
-          if (img) {
-            gsap.to(img, {
-              rotate: 180,
-              duration: 0.3
-            });
-          }
-        });
-        
-        setTimeout(() => isAnimating = false, 100);
-      }
-    };
-
-    window.addEventListener("wheel", handleWheel);
-    gsap.to(reference.current, {
+    // nomral anime
+    animationRef.current = gsap.to(container, {
       xPercent: -100,
       duration: 40,
       repeat: -1,
       ease: "none",
     });
 
+    const handleWheel = (e: WheelEvent) => {
+      if (isAnimatingRef.current || !animationRef.current) return;
+      
+      isAnimatingRef.current = true;
+      const isScrollingDown = e.deltaY > 0;
+      animationRef.current.kill();
+      animationRef.current = gsap.to(container, {
+        xPercent: isScrollingDown ? -speed : 0,
+        duration: isScrollingDown ? speed : 40,
+        repeat: -1,
+        ease: "none",
+      });
+      gsap.to(imgRefs.current, {
+        rotate: isScrollingDown ? 0 : 180,
+        duration: 0.3,
+      });
+
+      setTimeout(() => {
+        isAnimatingRef.current = false;
+      }, 100);
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: true });
+
     return () => {
       window.removeEventListener("wheel", handleWheel);
+      animationRef.current?.kill();
     };
-  }, []);
-
-  const addToImgRefs = (el: HTMLImageElement | null) => {
-    if (el && !imgRefs.current.includes(el)) {
-      imgRefs.current.push(el);
-    }
-  };
+  }, [speed]);
 
   return (
     <div className="flex overflow-hidden sm:h-[80vh]" id="AboutCarousel">
-      <div className="flex" ref={reference}>
-        {[...Array(25)].map((_, index) => (
-          <div key={index} className="bg-sky-300/40 flex shrink-0 items-center gap-20 py-15 px-5">
-            <h1 className=" text-6xl sm:text-[40vh] whitespace-nowrap font-bold"> {props.name || "None"} </h1>
+      <div className="flex" ref={containerRef}>
+        {Array.from({ length: 25 }, (_, i) => (
+          <div key={i} className="bg-sky-300/40 flex shrink-0 items-center gap-20 py-15 px-5">
+            <h1 className="text-6xl sm:text-[40vh] whitespace-nowrap font-bold">
+              {name}
+            </h1>
             <img
-              src={props.img || "https://www.brandium.nl/wp-content/uploads/2023/07/arrow-br.svg"}
+              src={img}
               alt="arrow"
-              className="h-[60px]  sm:h-[200px] transition-transform"
-              ref={addToImgRefs}
+              className="h-[60px] sm:h-[200px] transition-transform"
+              ref={(el) => {
+                if (el && !imgRefs.current.includes(el)) {
+                  imgRefs.current.push(el);
+                }
+              }}
             />
           </div>
         ))}
