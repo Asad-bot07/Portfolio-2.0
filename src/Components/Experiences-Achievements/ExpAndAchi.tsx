@@ -62,7 +62,7 @@ export const MarqueeScreen: React.FC<TextType> = ({ text, end, percent }) => {
     <section ref={containerRef} className="min-h-screen bg-sky-300/50">
       <h1
         ref={textRef}
-        className="flex whitespace-nowrap text-[18vh] md:text-[25vh] lg:text-[20vh] font-bold text-black sm:text-[70vh]"
+        className="flex whitespace-nowrap text-[18vh] md:text-[25vh] lg:text-[75vh] font-bold text-black sm:text-[70vh]"
       >
         {text || "IDK"}
       </h1>
