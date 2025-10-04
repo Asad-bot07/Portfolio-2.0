@@ -7,7 +7,7 @@ type MarqueeProps = {
   speed?: number;
 };
 
-function About({ name = "None", img = "https://www.brandium.nl/wp-content/uploads/2023/07/arrow-br.svg", speed = 80 }: MarqueeProps) {
+function About(props : MarqueeProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
   const animationRef = useRef<gsap.core.Tween | null>(null);
@@ -32,8 +32,8 @@ function About({ name = "None", img = "https://www.brandium.nl/wp-content/upload
       const isScrollingDown = e.deltaY > 0;
       animationRef.current.kill();
       animationRef.current = gsap.to(container, {
-        xPercent: isScrollingDown ? -speed : 0,
-        duration: isScrollingDown ? speed : 40,
+        xPercent: isScrollingDown ? `-${props.speed}` : 0,
+        duration: isScrollingDown ? props.speed : 40,
         repeat: -1,
         ease: "none",
       });
@@ -53,7 +53,7 @@ function About({ name = "None", img = "https://www.brandium.nl/wp-content/upload
       window.removeEventListener("wheel", handleWheel);
       animationRef.current?.kill();
     };
-  }, [speed]);
+  }, [props.speed]);
 
   return (
     <div className="flex overflow-hidden sm:h-[80vh]" id="AboutCarousel">
@@ -61,10 +61,10 @@ function About({ name = "None", img = "https://www.brandium.nl/wp-content/upload
         {Array.from({ length: 25 }, (_, i) => (
           <div key={i} className="bg-sky-300/40 flex shrink-0 items-center gap-20 py-15 px-5">
             <h1 className="text-6xl sm:text-[40vh] whitespace-nowrap font-bold">
-              {name}
+              {props.name}
             </h1>
             <img
-              src={img}
+              src={props.img}
               alt="arrow"
               className="h-[60px] sm:h-[200px] transition-transform"
               ref={(el) => {
