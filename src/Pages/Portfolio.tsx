@@ -12,6 +12,7 @@ import { ProjectPage } from "./ProjectsPage";
 import { Footer } from "../Components/Footer/Footer";
 import ResumeBttn from "../Components/Resume/ResumeBtn";
 import About from "../Components/Marquee/MarqueeMotion";
+// import { Snowfall } from "react-snowfall";
 
 function Portfolio() {
   //   const items = [
@@ -42,13 +43,13 @@ function Portfolio() {
         />
         <Footer />
         <motion.div
-        className="fixed top-5 right-2 z-50 lg:block  bg-black/20 backdrop-blur-2xl rounded-md"
-        variants={fadeUpVariant}
-        initial="hidden"
-        animate="visible"
-      >
-        <ResumeBttn />
-      </motion.div>
+          className="fixed top-5 right-2 z-50 lg:block  bg-black/20 backdrop-blur-2xl rounded-md"
+          variants={fadeUpVariant}
+          initial="hidden"
+          animate="visible"
+        >
+          <ResumeBttn />
+        </motion.div>
         <motion.div
           className="fixed bottom-4 right-4 z-50 lg:block hidden"
           variants={fadeUpVariant}
