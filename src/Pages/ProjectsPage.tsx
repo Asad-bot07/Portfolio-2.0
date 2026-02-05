@@ -6,6 +6,9 @@ import Grimtok from "../assets/grimtok-min.png";
 import Todo from "../assets/todo-min.png";
 import Sneakick from "../assets/sneakick-min.gif";
 import QR from "../assets/qr-min.gif";
+import JWT from "../assets/jwt-min.png";
+import agent from "../assets/ai-agent.png";
+import meta from "../assets/metasphere.png";
 // import weather from "../assets/weather.gif";
 import { Particles } from "../Components/UI/Particles";
 import ProjectCard from "../Components/PointedProjects/MobileProjects";
@@ -20,6 +23,27 @@ type ProjectType = {
 
 const Projects: ProjectType[] = [
   {
+    title: "JWT-Authentication.com",
+    href: "https://github.com/Asad-bot07/JWT-Auth",
+    name: "JWT Authentication",
+    des: "JWT-Auth is a Node.js + Express backend project that implements JWT-based authentication for REST APIs, using MongoDB (Mongoose) for user management and secure access to protected routes.",
+    img: JWT,
+  },
+  {
+    title: "Multi System AI-Agent",
+    href: "https://github.com/Asad-bot07/Multi-Agent-System-II",
+    name: "Multi System AI-Agent",
+    des: "This project demonstrates a production-ready multi-agent AI system with intelligent handoff, built using the OpenAI Agents SDK.",
+    img: agent,
+  },
+  {
+    title: "MetaSphere 2026",
+    href: "https://metasphere2026.iem.edu.in/",
+    name: "MetaSphere 2026",
+    des: "Built and deployed the official website for the college department’s MetaSphere 2026 conference, showcasing event details, schedules, and announcements with a clean, responsive design for public access.",
+    img: meta,
+  },
+  {
     title: "currency-converter.com",
     href: "https://asad-bot07.github.io/Currency-Converter/",
     name: "Currency Converter",
@@ -32,20 +56,6 @@ const Projects: ProjectType[] = [
     name: "Password Generator",
     des: "A customizable password generator built with React, Vite, and Tailwind CSS.",
     img: PasswordGenerator,
-  },
-  {
-    title: "grimtok.com",
-    href: "https://grim-tok.vercel.app/",
-    name: "GrimTok",
-    des: "A fun playground built with React, TypeScript, and Vite.",
-    img: Grimtok,
-  },
-  {
-    title: "todolist.com",
-    href: "https://to-do-with-type-script-ashy.vercel.app/",
-    name: "To Do List",
-    des: "A modern, responsive To-Do App with React + TypeScript.",
-    img: Todo,
   },
   {
     title: "qrgenerator.com",
