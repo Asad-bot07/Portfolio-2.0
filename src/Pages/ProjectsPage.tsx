@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { PinContainer } from "../Components/PointedProjects/PinContainer";
 import CurrencyConverter from "../assets/currencyConverter-min.png";
 import PasswordGenerator from "../assets/password-min.png";
-import Grimtok from "../assets/grimtok-min.png";
-import Todo from "../assets/todo-min.png";
 import Sneakick from "../assets/sneakick-min.gif";
 import QR from "../assets/qr-min.gif";
 import JWT from "../assets/jwt-min.png";
