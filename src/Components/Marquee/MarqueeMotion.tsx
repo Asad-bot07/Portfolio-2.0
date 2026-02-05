@@ -4,82 +4,87 @@ import { useRef, useEffect } from "react";
 type MarqueeProps = {
   name?: string;
   img?: string;
-  speed?: number;
+  speed?: number; // Higher number = Slower (it's duration based)
 };
 
 function About(props: MarqueeProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const imgRefs = useRef<HTMLImageElement[]>([]);
-  const animationRef = useRef<gsap.core.Tween | null>(null);
-  const isAnimatingRef = useRef(false);
+  const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
-    const isMobile = window.innerWidth < 640;
-    const baseDuration = isMobile ? 80 : 40;
 
-    // nomral anime
-    animationRef.current = gsap.to(container, {
-      xPercent: -100,
-      duration: baseDuration,
+    // 1. Slow down the base speed. 
+    // Higher duration = Slower movement. 
+    // Try 60-80 for a very chill crawl.
+    const duration = props.speed || 60; 
+
+    // Create a timeline for better control
+    timelineRef.current = gsap.timeline({
       repeat: -1,
-      ease: "none",
+      defaults: { ease: "none" }
+    });
+
+    timelineRef.current.to(container, {
+      xPercent: -50, // Only move half if you have enough items for a seamless loop
+      duration: duration,
     });
 
     const handleWheel = (e: WheelEvent) => {
-      if (isAnimatingRef.current || !animationRef.current) return;
-      
-      isAnimatingRef.current = true;
+      if (!timelineRef.current) return;
+
       const isScrollingDown = e.deltaY > 0;
-      animationRef.current.kill();
-      
-      const fastDuration = isMobile ? (props.speed || 20) * 2 : (props.speed || 20);
-      const slowDuration = baseDuration;
-      
-      animationRef.current = gsap.to(container, {
-        xPercent: isScrollingDown ? `-${fastDuration}` : 0,
-        duration: isScrollingDown ? fastDuration : slowDuration,
-        repeat: -1,
-        ease: "none",
-      });
-      
-      gsap.to(imgRefs.current, {
-        rotate: isScrollingDown ? 0 : 180,
-        duration: 0.3,
+
+      // Adjust the timeScale slightly on scroll for a "nudge" effect 
+      // instead of killing/restarting the whole animation
+      gsap.to(timelineRef.current, {
+        timeScale: isScrollingDown ? 1.5 : -1.5,
+        duration: 0.5,
+        onComplete: () => {
+          // Gently return to normal slow speed
+          gsap.to(timelineRef.current!, { timeScale: 1, duration: 1 });
+        }
       });
 
-      setTimeout(() => {
-        isAnimatingRef.current = false;
-      }, 100);
+      // Flip the arrows based on direction
+      gsap.to(imgRefs.current, {
+        rotate: isScrollingDown ? 0 : 180,
+        duration: 0.4,
+      });
     };
 
     window.addEventListener("wheel", handleWheel, { passive: true });
 
     return () => {
       window.removeEventListener("wheel", handleWheel);
-      animationRef.current?.kill();
+      timelineRef.current?.kill();
     };
   }, [props.speed]);
 
   return (
-    <div className="flex overflow-hidden h-[25vh] md:h-[40vh] lg:h-[80vh]" id="AboutCarousel">
-      <div className="flex" ref={containerRef}>
-        {Array.from({ length: 25 }, (_, i) => (
-          <div key={i} className="bg-sky-300/40 flex shrink-0 items-center gap-20 py-15 px-5">
-            <h1 className="text-[15vh] md:text-[20vh] lg:text-[40vh] whitespace-nowrap font-bold">
-              {props.name}
-            </h1>
-            <img
-              src={props.img}
-              alt="arrow"
-              className="h-[80px] md:h-[150px] sm:h-[200px] transition-transform"
-              ref={(el) => {
-                if (el && !imgRefs.current.includes(el)) {
-                  imgRefs.current.push(el);
-                }
-              }}
-            />
+    <div className="flex overflow-hidden h-[20vh] items-center bg-sky-300/20" id="AboutCarousel">
+      <div className="flex whitespace-nowrap" ref={containerRef}>
+        {[...Array(2)].map((_, setIdx) => (
+          <div key={setIdx} className="flex shrink-0 items-center gap-10 md:gap-20 px-5">
+            {Array.from({ length: 10 }, (_, i) => (
+              <div key={i} className="flex items-center gap-10 md:gap-20">
+                <h1 className="text-[10vh] md:text-[10vh] font-bold uppercase tracking-tighter press-start-2p-regular">
+                  {props.name}
+                </h1>
+                <img
+                  src={props.img}
+                  alt="arrow"
+                  className="h-12 md:h-24 object-contain"
+                  ref={(el) => {
+                    if (el && !imgRefs.current.includes(el)) {
+                      imgRefs.current.push(el);
+                    }
+                  }}
+                />
+              </div>
+            ))}
           </div>
         ))}
       </div>
