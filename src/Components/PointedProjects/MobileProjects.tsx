@@ -3,7 +3,7 @@ import React from "react";
 interface ProjectCardProps {
   title: string;
   description: string;
-  img: string;
+  img?: string;
   link: string;
 }
 
@@ -19,21 +19,26 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <h3 className="text-xl font-bold">{title}</h3>
         <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
       </div>
-      <div className="flex-1 flex items-center justify-center m-2 ">
-        <img
-          src={img}
-          alt={title}
-          className="rounded-md max-h-60 object-contain"
-        />
-      </div>
-      <div className="p-4">
+
+      {/* Conditional Rendering: Only show this div if img exists */}
+      {img && (
+        <div className="flex items-center justify-center m-2 px-4">
+          <img
+            src={img}
+            alt={title}
+            className="rounded-xl max-h-60 w-full object-cover border border-gray-800"
+          />
+        </div>
+      )}
+
+      <div className="p-6 mt-auto">
         <a
           href={link}
           target="_blank"
           rel="noopener noreferrer"
-          className="px-4 py-2 bg-white text-black hover:bg-gray-400 rounded-lg text-sm transition"
+          className="inline-block px-6 py-2 bg-white text-black hover:bg-gray-200 rounded-full text-sm font-semibold transition-all active:scale-95"
         >
-          Visit
+          Visit Project
         </a>
       </div>
     </div>
