@@ -3,7 +3,7 @@ import { Download } from 'lucide-react';
 
 export default function ResumeDownloadButton() {
   const [isHovered, setIsHovered] = useState<boolean>(false);
-  const driveLink = "https://drive.google.com/file/d/1ckIM725reUdqar5qacXmJ5lOhAIkqMN6/view?usp=sharing";
+  const driveLink = "https://drive.google.com/file/d/1M5gSwBXl8Nf4dwZjdpP14SSiu2upcl_G/view?usp=drive_link";
   
   const handleDownload = () => {
     const fileId = driveLink.match(/\/d\/(.+?)\//)?.[1];
